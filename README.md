@@ -24,6 +24,58 @@ the nature of the children as unique resources.
 
 ### Including in Your Project
 
+These instructions presume usage of the multi-module project setup.
+
+#### Include the modules as a dependency in your main POM
+
+```xml
+<dependency>
+    <groupId>com.avionos.aem.modellist</groupId>
+    <artifactId>aem-model-list.api</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>com.avionos.aem.modellist</groupId>
+    <artifactId>aem-model-list.ui.apps</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <type>zip</type>
+</dependency>
+```
+
+Once done you should include the API module as a dependency of your 
+CORE module.
+
+#### Include the UI Zip archive as a subPackage in your UI.Apps POM
+
+```xml
+<plugin>
+    <groupId>com.day.jcr.vault</groupId>
+    <artifactId>content-package-maven-plugin</artifactId>
+    <extensions>true</extensions>
+    <configuration>
+        <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+        <verbose>true</verbose>
+        <failOnError>true</failOnError>
+        <group>your-project-group</group>
+        <embeddeds>
+            <embedded>
+                <groupId>com.your.project</groupId>
+                <artifactId>your-project.core</artifactId>
+                <target>/apps/your-project/install</target>
+            </embedded>
+        </embeddeds>
+        <subPackages>
+            <subPackage>
+                <groupId>com.avionos.aem.modellist</groupId>
+                <artifactId>aem-model-list.ui.apps</artifactId>
+                <filter>true</filter>
+            </subPackage>
+        </subPackages>
+    </configuration>
+</plugin>
+```
+
 ### Java API
 
 The easiest way to utilize the pattern exposed by this module is to have 
