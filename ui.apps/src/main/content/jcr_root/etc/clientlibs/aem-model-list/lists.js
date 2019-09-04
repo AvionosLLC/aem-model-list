@@ -134,7 +134,7 @@ AEMModelList.Lists.v1 = function( ns, channel ) {
          * @param editable
          * @param options An optional set of options
          * @param options.refresh Indicates that a refresh of the container should occur after the movement
-         * @returns A jQuery promise of the move
+         * @returns PromiseLike<T> A jQuery promise of the move
          */
         this.moveForward = function( editable, options ) {
             return this.findNextSiblingPath( editable )
@@ -151,7 +151,7 @@ AEMModelList.Lists.v1 = function( ns, channel ) {
                 } )
                 .then( function( result ) {
                     if( options.refresh ) {
-                        ns.edit.actions.doRefresh( component.getParent() );
+                        ns.edit.actions.doRefresh( editable.getParent() );
                     }
 
                     return result;
@@ -164,7 +164,7 @@ AEMModelList.Lists.v1 = function( ns, channel ) {
          * @param editable
          * @param options An optional set of options
          * @param options.refresh Indicates that a refresh of the container should occur after the movement
-         * @returns A jQuery promise of the move
+         * @returns PromiseLike<T> A jQuery promise of the move
          */
         this.moveBackward = function( editable, options ) {
             return this.findPriorSiblingPath( editable )
@@ -181,7 +181,7 @@ AEMModelList.Lists.v1 = function( ns, channel ) {
                 } )
                 .then( function( result ) {
                     if( options.refresh ) {
-                        ns.edit.actions.doRefresh( component.getParent() );
+                        ns.edit.actions.doRefresh( editable.getParent() );
                     }
 
                     return result;
