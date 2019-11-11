@@ -32,13 +32,13 @@ These instructions presume usage of the multi-module project setup.
 <dependency>
     <groupId>com.avionos.aem.modellist</groupId>
     <artifactId>aem-model-list.api</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>com.avionos.aem.modellist</groupId>
     <artifactId>aem-model-list.ui.apps</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <type>zip</type>
 </dependency>
 ```
